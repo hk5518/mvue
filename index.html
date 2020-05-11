@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mvue</title>
+</head>
+<body>
+    <div id="app">
+        <p @click="clickHandle">{{name}}</p>
+        <ul>
+            <li>{{name}}---{{person.age}}</li>
+            <li>{{name}}</li>
+            <li>{{name}}</li>
+        </ul>
+        <div v-text="name"></div>
+        <div v-text="person.age"></div>
+        <div v-html="html"></div>
+        <div>
+            <input type="text" v-model="name"/>
+        </div>
+        <button v-on:click="clickHandle">{{name}}</button>
+    </div>
+
+    <script type="module">
+        import Mvue from './src/mvue.js'
+        let vm = new Mvue({
+            el: '#app',
+            data: {
+                name: 'zhangsan',
+                html: '<h3>html片段</h3>',
+                person: {
+                    age: 20
+                }
+            },
+            methods: {
+                clickHandle() {
+                    console.log('event click');
+                    this.name= 'lisi'
+                }
+            },
+        });
+        console.log(vm);
+    </script>
+</body>
+</html>
